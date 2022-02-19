@@ -2,9 +2,9 @@ import UIKit
 
 final class MapTableViewCell: UITableViewCell {
     // MARK: - Identifier
-    
+
     static let identifier = "MapTableViewCell"
-    
+
     // MARK: - Properties
 
     // MARK: Private
@@ -24,6 +24,7 @@ final class MapTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Constraints
 
     // MARK: Private

@@ -19,9 +19,9 @@ final class WeatherTableViewController: UITableViewController {
         addTableViewSetups()
         getWeather()
     }
-    
+
     // MARK: - API
-    
+
     private func getWeather() {
         APIManager.instanse.getCurrencysBy { weather in
             self.weather = weather
@@ -56,7 +56,7 @@ final class WeatherTableViewController: UITableViewController {
         }
         return 150
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
@@ -73,7 +73,7 @@ final class WeatherTableViewController: UITableViewController {
         if sections[indexPath.section] == "Weather" {
             tableView.register(WeatherTableViewCell.self, forCellReuseIdentifier: WeatherTableViewCell.identifier)
             if let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as? WeatherTableViewCell {
-                cell.weatherView.set(weather?.name ?? "None", (weather?.main.temp ?? 0), weather?.sys.country ?? "None")
+                cell.weatherView.set(weather?.name ?? "None", weather?.main.temp ?? 0, weather?.sys.country ?? "None")
                 return cell
             }
         }

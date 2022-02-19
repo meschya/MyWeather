@@ -2,9 +2,9 @@ import UIKit
 
 final class WeatherTableViewCell: UITableViewCell {
     // MARK: - Identifier
-    
+
     static let identifier = "WeatherTableViewCell"
-    
+
     // MARK: - Properties
 
     // MARK: Private
@@ -24,6 +24,7 @@ final class WeatherTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Constraints
 
     // MARK: Private
