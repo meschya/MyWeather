@@ -73,7 +73,7 @@ final class WeatherTableViewController: UITableViewController {
         if sections[indexPath.section] == "Weather" {
             tableView.register(WeatherTableViewCell.self, forCellReuseIdentifier: WeatherTableViewCell.identifier)
             if let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as? WeatherTableViewCell {
-                cell.weatherView.set(weather?.name ?? "None", (weather?.main.temp ?? 0))
+                cell.weatherView.set(weather?.name ?? "None", (weather?.main.temp ?? 0), weather?.sys.country ?? "None")
                 return cell
             }
         }

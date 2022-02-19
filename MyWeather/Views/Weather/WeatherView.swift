@@ -6,7 +6,9 @@ final class WeatherView: UIView {
     // MARK: Private
 
     private let stackView: UIStackView = .init()
-    private let geolocationLabel: UILabel = .init()
+    private let geolocationStackView: UIStackView = .init()
+    private let cityLabel: UILabel = .init()
+    private let countryLabel: UILabel = .init()
     private let scaleLabel: UILabel = .init()
     private let toCelsiy: Double = 273.15
 
@@ -26,9 +28,10 @@ final class WeatherView: UIView {
     
     // MARK: - API
     
-    func set(_ geolocatian: String, _ scale: Double) {
-        geolocationLabel.text = geolocatian
+    func set(_ geolocatian: String, _ scale: Double, _ country: String) {
+        cityLabel.text = geolocatian
         scaleLabel.text = String(format: "%.0f", scale - toCelsiy) + "º"
+        countryLabel.text = country
     }
     
     // MARK: - Constraints
@@ -49,14 +52,18 @@ final class WeatherView: UIView {
     
     private func addSubviews() {
         addSubview(stackView)
-        stackView.addArrangedSubview(geolocationLabel)
+        stackView.addArrangedSubview(geolocationStackView)
         stackView.addArrangedSubview(scaleLabel)
+        geolocationStackView.addArrangedSubview(cityLabel)
+        geolocationStackView.addArrangedSubview(countryLabel)
     }
     
     private func addSetups() {
         addViewSetups()
         addStackViewSetups()
-        addGeolocationLabelSetups()
+        addGeolocationStackViewSetups()
+        addCityLabelSetups()
+        addCountryLabelSetups()
         addScaleLabelSetups()
     }
     
@@ -71,10 +78,23 @@ final class WeatherView: UIView {
         stackView.alignment = .fill
     }
     
-    private func addGeolocationLabelSetups() {
-        geolocationLabel.textAlignment = .left
-        geolocationLabel.textColor = .white
-        geolocationLabel.font = .systemFont(ofSize: 20, weight: .bold)
+    private func addGeolocationStackViewSetups() {
+        geolocationStackView.axis = .vertical
+        geolocationStackView.distribution = .fillEqually
+        geolocationStackView.alignment = .fill
+    }
+    
+    private func addCityLabelSetups() {
+        cityLabel.textAlignment = .left
+        cityLabel.textColor = .white
+        cityLabel.font = .systemFont(ofSize: 20, weight: .bold)
+    }
+    
+    private func addCountryLabelSetups() {
+        countryLabel.text = "BY"
+        countryLabel.textAlignment = .left
+        countryLabel.textColor = .darkGray
+        countryLabel.font = .systemFont(ofSize: 15, weight: .light)
     }
     
     private func addScaleLabelSetups() {
