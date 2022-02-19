@@ -8,6 +8,7 @@ final class WeatherView: UIView {
     private let stackView: UIStackView = .init()
     private let geolocationLabel: UILabel = .init()
     private let scaleLabel: UILabel = .init()
+    private let toCelsiy: Double = 273.15
 
     // MARK: - LIfecycle
 
@@ -21,6 +22,13 @@ final class WeatherView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - API
+    
+    func set(_ geolocatian: String, _ scale: Double) {
+        geolocationLabel.text = geolocatian
+        scaleLabel.text = String(format: "%.0f", scale - toCelsiy) + "º"
     }
     
     // MARK: - Constraints
@@ -64,14 +72,12 @@ final class WeatherView: UIView {
     }
     
     private func addGeolocationLabelSetups() {
-        geolocationLabel.text = "Minsk"
         geolocationLabel.textAlignment = .left
         geolocationLabel.textColor = .white
         geolocationLabel.font = .systemFont(ofSize: 20, weight: .bold)
     }
     
     private func addScaleLabelSetups() {
-        scaleLabel.text = "9º"
         scaleLabel.textAlignment = .right
         scaleLabel.textColor = .white
         scaleLabel.font = .systemFont(ofSize: 60, weight: .bold)

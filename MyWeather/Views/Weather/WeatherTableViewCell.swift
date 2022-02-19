@@ -9,7 +9,7 @@ final class WeatherTableViewCell: UITableViewCell {
 
     // MARK: Private
 
-    private let weatherView = WeatherView()
+    let weatherView = WeatherView()
 
     // MARK: - LIfecycle
 

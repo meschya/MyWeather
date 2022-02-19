@@ -1,13 +1,19 @@
 import MapKit
 import UIKit
 
+private let locationManager = CLLocationManager()
+
+enum Coordinates {
+    static let latitude = locationManager.location?.coordinate.latitude
+    static let longitude = locationManager.location?.coordinate.longitude
+}
+
 final class MapView: UIView {
     // MARK: - Properties
 
     // MARK: Private
 
     private let map: MKMapView = .init()
-    private let locationManager = CLLocationManager()
     private let locationButton = UIButton()
 
     // MARK: - LIfecycle
@@ -82,10 +88,8 @@ final class MapView: UIView {
     
     private func clickLocationButton() {
         map.showsUserLocation = true
-        let latitude = locationManager.location?.coordinate.latitude
-        let longitude = locationManager.location?.coordinate.longitude
-        let location = CLLocationCoordinate2D(latitude: latitude ?? 53.904541,
-                                              longitude: longitude ?? 27.561523)
+        let location = CLLocationCoordinate2D(latitude: Coordinates.latitude ?? 53.904541,
+                                              longitude: Coordinates.longitude ?? 27.561523)
         let region = MKCoordinateRegion(center: location, latitudinalMeters: 2000, longitudinalMeters: 2000)
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()

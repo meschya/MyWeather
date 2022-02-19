@@ -6,12 +6,27 @@ final class WeatherTableViewController: UITableViewController {
     // MARK: Private
 
     private let sections: [String] = ["Weather", "Map"]
+    private var weather: Weather? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
     // MARK: - LIfecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addTableViewSetups()
+        getWeather()
+    }
+    
+    // MARK: - API
+    
+    private func getWeather() {
+        APIManager.instanse.getCurrencysBy { weather in
+            self.weather = weather
+            print(weather)
+        }
     }
 
     // MARK: - Setups
@@ -58,6 +73,7 @@ final class WeatherTableViewController: UITableViewController {
         if sections[indexPath.section] == "Weather" {
             tableView.register(WeatherTableViewCell.self, forCellReuseIdentifier: WeatherTableViewCell.identifier)
             if let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as? WeatherTableViewCell {
+                cell.weatherView.set(weather?.name ?? "None", (weather?.main.temp ?? 0))
                 return cell
             }
         }
