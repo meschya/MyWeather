@@ -68,7 +68,10 @@ final class MapView: UIView {
     }
     
     private func addViewSetups() {
-        backgroundColor = UIColor(red: 36/255, green: 34/255, blue: 49/255, alpha: 1.0)
+        backgroundColor = UIColor(red: 36/255,
+                                  green: 34/255,
+                                  blue: 49/255,
+                                  alpha: 1.0)
         layer.cornerRadius = 15
     }
     
@@ -90,7 +93,9 @@ final class MapView: UIView {
         map.showsUserLocation = true
         let location = CLLocationCoordinate2D(latitude: Coordinates.latitude ?? 53.904541,
                                               longitude: Coordinates.longitude ?? 27.561523)
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: 2000, longitudinalMeters: 2000)
+        let region = MKCoordinateRegion(center: location,
+                                        latitudinalMeters: 2000,
+                                        longitudinalMeters: 2000)
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         map.setRegion(region, animated: true)
