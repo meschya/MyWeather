@@ -13,7 +13,7 @@ MapKit
 ```
 ```ruby
 Cocoapods
-```map
+```
 
 ## Installation
 
