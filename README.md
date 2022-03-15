@@ -1,5 +1,20 @@
 # MyWeather
 An app that allows you to know your geo-position and the weather in your area.
+## Technology
+
+```ruby
+UIKit
+```
+```ruby
+Alamofire
+```
+```ruby
+MapKit
+```
+```ruby
+Cocoapods
+```map
+
 ## Installation
 
 ### CocoaPods
